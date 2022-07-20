@@ -16,7 +16,7 @@ public class Tests
     };
 
     static object[] MergeCases =
-{
+    {
         new object[] { new int[] { 3,9,1 }, new int[] { 4, 2, }, new int[] { 1,2,3,4,9 } },
         new object[] { new int[] { 7,5 }, new int[] { 6, 2, }, new int[] { 2,5,6,7 } },
         new object[] { new int[] { 15,99 }, new int[] { -3000, 555,3 }, new int[] { -3000,3,15,99,555 } },
@@ -32,11 +32,10 @@ public class Tests
         Assert.That(mergeSort.Sort(inputArray), Is.EqualTo(sortedArray));
     }
 
-    [Ignore("Merge doesn't need independent testing")]
     [TestCaseSource(nameof(MergeCases))]
     public void Given_TwoArrays_Merge_ReturnsMergedSortedArray(int[] firstHalf, int[] secondHalf, int[] mergedSortedArray) 
     {
-        //Assert.That(SortingAlgorithms.Merge(firstHalf, secondHalf), Is.EqualTo(mergedSortedArray));
+        Assert.That(MergeSort.Merge(firstHalf, secondHalf), Is.EqualTo(mergedSortedArray));
     }
     #endregion
 
