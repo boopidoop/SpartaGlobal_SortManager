@@ -34,3 +34,9 @@ Create a project board for your project and add 6 columns:
 - Review
 - Done
 - Notes
+
+Your project must have a README - look at the examples in Further Reading for format. 
+
+### Deadline 9.30am Friday 22nd July
+
+###  minute presentation 
