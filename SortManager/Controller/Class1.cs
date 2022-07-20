@@ -1,7 +1,8 @@
-﻿namespace Controller
-{
-    public class Class1
-    {
+﻿using Model;
 
-    }
+namespace Controller;
+
+public class Class1
+{
+
 }
