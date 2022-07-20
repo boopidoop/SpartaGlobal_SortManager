@@ -4,6 +4,8 @@ public class Tests
 {
 
     #region Test Data
+    //SortCases can be used to test any of the sorting algorithms
+    //(as long as they are sorting int[] arrays)
     static object[] SortCases =
     {
         new object[] { new int[] { 3,2,1 }, new int[] { 1,2,3 } },
@@ -33,6 +35,17 @@ public class Tests
     public void Given_TwoArrays_Merge_ReturnsMergedSortedArray(int[] firstHalf, int[] secondHalf, int[] mergedSortedArray) 
     {
         Assert.That(SortingAlgorithms.Merge(firstHalf, secondHalf), Is.EqualTo(mergedSortedArray));
+    }
+    #endregion
+
+    #region BubbleSort
+
+    
+    [TestCaseSource(nameof(SortCases))]
+    [Ignore("Not implemented yet")]
+    public void Given_AnUnsortedArray_BubbleSort_ReturnsSortedArray(int[] inputArray, int[] sortedArray)
+    {
+        Assert.That(SortingAlgorithms.BubbleSort(inputArray), Is.EqualTo(sortedArray));
     }
     #endregion
 }
