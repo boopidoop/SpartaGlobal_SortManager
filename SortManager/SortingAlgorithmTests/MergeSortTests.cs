@@ -19,4 +19,17 @@ public class Tests
         Assert.That(SortingAlgorithms.MergeSort(inputArray), Is.EqualTo(sortedArray));
     }
 
+
+    static object[] MergeCases =
+    {
+        new object[] { new int[] { 3,9,1 }, new int[] { 4, 2, }, new int[] { 1,2,3,4,9 } },
+        new object[] { new int[] { 8,3,4 }, new int[] { 0, 7, }, new int[] { 0,3,4,7,8 } }
+    };
+
+    [TestCaseSource(nameof(MergeCases))]
+    public void Given_TwoArrays_Merge_ReturnsMergedSortedArray(int[] firstHalf, int[] secondHalf, int[] mergedSortedArray) 
+    {
+        Assert.That(SortingAlgorithms.Merge(firstHalf, secondHalf), Is.EqualTo(mergedSortedArray));
+    }
+
 }
