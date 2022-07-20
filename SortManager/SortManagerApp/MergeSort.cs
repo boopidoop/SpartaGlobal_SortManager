@@ -1,45 +1,51 @@
-﻿namespace Model;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public class SortingAlgorithms
+namespace Model;
+
+public class MergeSort : SortingAlgorithms
 {
-    public static int[] MergeSort(int[] inputArr)
+    public override int[] Sort(int[] input)
     {
-        if (inputArr.Length <= 1) return inputArr;
+        if (input.Length <= 1) return input;
 
-        int arrSz = inputArr.Length / 2;
+        int inputSize = input.Length / 2;
+        int[] firstArr = new int[inputSize];
+        int[] secondArr = new int[input.Length - inputSize];
 
-        int[] firstArr = new int[arrSz];                        // 1, 5, 6
-        int[] secondArr = new int[inputArr.Length - arrSz];     // 2, 7
+        Array.Copy(input, firstArr, inputSize);
+        Array.Copy(input, inputSize, secondArr, 0, secondArr.Length);
 
-        Array.Copy(inputArr, firstArr, arrSz);
-        Array.Copy(inputArr, arrSz, secondArr, 0, secondArr.Length);
-
-        int[] firstSorted = MergeSort(firstArr);
-        int[] secondSorted = MergeSort(secondArr);
+        int[] firstSorted = Sort(firstArr);
+        int[] secondSorted = Sort(secondArr);
 
         return Merge(firstSorted, secondSorted);
     }
 
     public static int[] Merge(int[] first, int[] second)
     {
-        int[] sorted = new int[first.Length + second.Length];
+        int[] sorted = new int[(first.Length + second.Length)];
 
-        for (int i = 0, j = 0, k = 0; i < sorted.Length; i++)
+        int x = 0, y = 0, i = 0;
+
+        while((x < first.Length || y < second.Length) && i < sorted.Length)
         {
-            if (first[j] < second[k])
-            {
-                sorted[i] = first[j];
-                j++;
-            } else if (first[j] > second[k])
-            {
-                sorted[i] = second[k];
-                k++;
+            // both arrays have contents add the lowest to sorted
+            if (x < first.Length && y < second.Length)
+            { 
+                if (first[x] <= second[y])
+                    sorted[i++] = first[x++];
+                else
+                    sorted[i++] = second[y++];
             }
-            else if (first[j] == second[k])
-            {
-
-            }
-
+            // one array still has contents, add it to sorted
+            else if (x < first.Length)
+                sorted[i++] = first[x++];
+            else if (y < second.Length)
+                sorted[i++] = second[y++];
         }
         return sorted;
     }

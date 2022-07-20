@@ -1,6 +1,4 @@
-﻿using Model;
-
-namespace Controller;
+﻿namespace Controller;
 
 public class Class1
 {
