@@ -10,8 +10,10 @@ public class MergeSort : SortingAlgorithms
 {
     public override int[] Sort(int[] input)
     {
+        // Breakpoint
         if (input.Length <= 1) return input;
 
+        // Split into two arrays
         int inputSize = input.Length / 2;
         int[] firstArr = new int[inputSize];
         int[] secondArr = new int[input.Length - inputSize];
@@ -19,9 +21,11 @@ public class MergeSort : SortingAlgorithms
         Array.Copy(input, firstArr, inputSize);
         Array.Copy(input, inputSize, secondArr, 0, secondArr.Length);
 
+        // Recursively sort
         int[] firstSorted = Sort(firstArr);
         int[] secondSorted = Sort(secondArr);
 
+        // Merge arrays
         return Merge(firstSorted, secondSorted);
     }
 
