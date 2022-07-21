@@ -5,51 +5,37 @@ namespace Controller;
 public class ControllerToModel
 {
 
-    public static string Result(string unsortedString)
+    public static (string, int) CheckInput(string inputSortType)
     {
-        List<int> unsortedList= UnSortedStringToUnSortedList(unsortedString);
-        int[] unsortedArray = UnSortedListToUnSortedArray(unsortedList);
-        int[] sortedArray = GenerateSortedArray(unsortedArray);
-        string sortedString = SortedStringOutput(sortedArray);
-        return sortedString;
-    }
-    public static string SortedStringOutput(int[] sortedArray)
-    {
-        string sortedString = "";
-        foreach (int ch in sortedArray)
-            sortedString += ch;
-        return sortedString;
-    }
-
-    public static int[] GenerateSortedArray(int[] unsortedArray)
-    {
-        int[] sortedArray = SortingAlgorithms.MergeSort(unsortedArray);
-        return sortedArray;
-    }
-    
-        
-    public static List<int> UnSortedStringToUnSortedList(string inputNumbers)
-    {
-        var numList = new List<int>();
-
-        foreach (char ch in inputNumbers)
+        if (Int32.TryParse(inputSortType, out int sortType))
         {
-            if (Int32.TryParse(ch.ToString(), out int value))
-                numList.Add(value);
+            if (sortType <= 0)
+            {
+                //TODO - Call Error function
+                return ($"Cannot have an array of size {sortType}", -999);
+            }
         }
-        return numList;
+        return ("", sortType);
     }
-    
-    public static int[] UnSortedListToUnSortedArray(List<int> unsortedList)
+
+    public void SortAlgorithm(ISort sortAlgo)
     {
-        int[] unsortedArray = new int[unsortedList.Count];
-        for (int i = 0; i <= unsortedList.Count; i++)
-            unsortedArray[i] = unsortedList[i];
-
-        return unsortedArray;
-
+        // Not yet implemented
     }
+    public static int[] GenerateIntegerList(int n)
+    {
+        if (n <= 0) return new int[] {};
 
+        int[] inputIntLs = new int[n];
+
+        Random random = new Random(); //seed value based on sys clock
+        
+        for (int i = 0; i < n; i++)
+        {
+            inputIntLs[i] = random.Next();
+        }
+        return inputIntLs;
+    }
 
     
 }
