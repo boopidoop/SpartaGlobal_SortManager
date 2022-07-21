@@ -4,12 +4,38 @@ namespace View;
 
 public class Program
 {
-    static void Main(string[] args)
+    public static string separator = "--------------------------";
+    public static void Main(string[] args)
     {
-        Console.WriteLine("SUPER SORTING MACHINE");
-        Console.WriteLine("Type in numbers with spaces to separate the numbers (eg: 1 2 3 4 5)");
-        string numbers =  Console.ReadLine();
-        string listNumbers = ControllerToModel.Result(numbers);
-        Console.WriteLine(listNumbers);
+        var devs = new string[] { "Charlie", "Dan", "David", "Laba" };
+        var colours = new ConsoleColor[] { ConsoleColor.Blue, ConsoleColor.Magenta, ConsoleColor.Green, ConsoleColor.Yellow };
+
+        Console.Beep(300, 100);
+        Console.WriteLine("Welcome to the Sorting Algorithm Application!");
+        Console.Beep(300, 100);
+        Console.Write("Created by: ");
+
+        for (int i = 0; i <= 3; i++)
+        {
+            Console.ForegroundColor = colours[i];
+            foreach (char c in devs[i])
+            {
+                Console.Beep(500, 100);
+                Console.Write(c);
+            }
+
+            Console.ResetColor();
+            if (i != 3)
+                Console.Write(", ");
+        }
+        Console.WriteLine();
+        Console.WriteLine(separator);
+        SelectSortingAlgorithm();
+    }
+
+    public static void SelectSortingAlgorithm()
+    {
+        Console.WriteLine("Please choose a Sorting Algorithm");
+
     }
 }
