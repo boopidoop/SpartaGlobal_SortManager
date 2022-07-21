@@ -35,13 +35,14 @@ public class Tests
     [TestCaseSource(nameof(SortCases))]
     public void Given_AnUnsortedArray_MergeSort_ReturnsSortedArray(int[] inputArray, int[] sortedArray)
     {
-        Assert.That(SortingAlgorithms.MergeSort(inputArray), Is.EqualTo(sortedArray));
+        MergeSort mergeSort = new MergeSort();
+        Assert.That(mergeSort.Sort(inputArray), Is.EqualTo(sortedArray));
     }
 
     [TestCaseSource(nameof(MergeCases))]
     public void Given_TwoArrays_Merge_ReturnsMergedSortedArray(int[] firstHalf, int[] secondHalf, int[] mergedSortedArray) 
     {
-        Assert.That(SortingAlgorithms.Merge(firstHalf, secondHalf), Is.EqualTo(mergedSortedArray));
+        Assert.That(MergeSort.Merge(firstHalf, secondHalf), Is.EqualTo(mergedSortedArray));
     }
     #endregion
 

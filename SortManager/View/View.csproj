@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Controller\Controller.csproj" />
+    <ProjectReference Include="..\SortManagerApp\Model.csproj" />
   </ItemGroup>
 
 </Project>

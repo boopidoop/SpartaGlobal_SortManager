@@ -1,59 +1,56 @@
-﻿namespace Model;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public class SortingAlgorithms
+namespace Model;
+
+public class MergeSort : SortingAlgorithms
 {
-    public static int[] MergeSort(int[] inputArr)
+    public override int[] Sort(int[] input)
     {
-        if (inputArr.Length <= 1) return inputArr;
+        // Breakpoint
+        if (input.Length <= 1) return input;
 
-        int arrSz = inputArr.Length / 2;
+        // Split into two arrays
+        int inputSize = input.Length / 2;
+        int[] firstArr = new int[inputSize];
+        int[] secondArr = new int[input.Length - inputSize];
 
-        int[] firstArr = new int[arrSz];                        
-        int[] secondArr = new int[inputArr.Length - arrSz];     
+        Array.Copy(input, firstArr, inputSize);
+        Array.Copy(input, inputSize, secondArr, 0, secondArr.Length);
 
-        Array.Copy(inputArr, firstArr, arrSz);
-        Array.Copy(inputArr, arrSz, secondArr, 0, secondArr.Length);
+        // Recursively sort
+        int[] firstSorted = Sort(firstArr);
+        int[] secondSorted = Sort(secondArr);
 
-        int[] firstSorted = MergeSort(firstArr);
-        int[] secondSorted = MergeSort(secondArr);
-
+        // Merge arrays
         return Merge(firstSorted, secondSorted);
     }
 
     public static int[] Merge(int[] first, int[] second)
     {
-        int[] sorted = new int[first.Length + second.Length];
+        int[] sorted = new int[(first.Length + second.Length)];
 
-        int i = 0, j = 0, k = 0;
+        int x = 0, y = 0, i = 0;
 
-        // While both sorted arrays have elements that haven't been processed yet...
-        while (j < first.Length && k < second.Length) 
+        while((x < first.Length || y < second.Length) && i < sorted.Length)
         {
-            /* Compare the current elements from both arrays.
-             * Set sorted to the lowest of the two values first[j] and second[k]
-             * and increment the sorted array index AND the lowest value index */
-            if (first[j] <= second[k])
-            {
-                sorted[i++] = first[j++];
+            // both arrays have contents add the lowest to sorted
+            if (x < first.Length && y < second.Length)
+            { 
+                if (first[x] <= second[y])
+                    sorted[i++] = first[x++];
+                else
+                    sorted[i++] = second[y++];
             }
-            else if (first[j] > second[k])
-            {
-                sorted[i++] = second[k++];
-            }
+            // one array still has contents, add it to sorted
+            else if (x < first.Length)
+                sorted[i++] = first[x++];
+            else if (y < second.Length)
+                sorted[i++] = second[y++];
         }
-
-        // By now, we have run out of elements from one of the arrays. So just copy the values from the
-        // remaining array into the sorted array (because both first and second arrays are...*sorted*)
-        while (j < first.Length)
-        {
-            sorted[i++] = first[j++];
-        }
-
-        while (k < second.Length)
-        {
-            sorted[i++] = second[k++];
-        }
-
         return sorted;
     }
 }
