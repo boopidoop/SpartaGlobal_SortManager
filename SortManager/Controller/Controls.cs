@@ -8,7 +8,7 @@ public class ControllerToModel
     private static int[] _inputArray;
     private static ISort _sortAlgorithm;
 
-    string[] listOfAlgos = new string[]
+    public static string[] listOfAlgos = new string[]
     {
         "Bubble", "Merge", "Net"
     };
@@ -30,22 +30,30 @@ public class ControllerToModel
         return "";
     }
 
-    public static string SortArray(string sortType)
+    public static string CheckAlgorithmInput(string sortType)
     {
         GenerateIntegerList(_arraySize);
 
-        if (listOfAlgos.Contains(sortType))
+        switch(sortType.ToLower())
         {
+            case "merge":
+            case "mergesort":
+                _sortAlgorithm = new MergeSort();
+                return "";
+            case "bubble":
+            case "bubblesort":
+                _sortAlgorithm = new BubbleSort();
+                return "";
+            case "net":
+            case "netsort":
+                _sortAlgorithm = new DotNetSort();
+                return "";
+            default:
+                return "Sort algorithm not recognised";
 
         }
-
-        ISort sortingAlgorithm = new ISort(sortType);
-
-        int[] sortedArray = sortingAlgorithm.Sort(inputArray);
-
-
-
     }
+
     public static void GenerateIntegerList(int n)
     {
         Random random = new Random(); //seed value based on sys clock

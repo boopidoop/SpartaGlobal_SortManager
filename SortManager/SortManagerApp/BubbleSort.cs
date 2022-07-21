@@ -2,9 +2,9 @@
 namespace Model;
 
 
-public class BubbleSort : SortingAlgorithms
+public class BubbleSort : ISort
 {
-    public static int[] Sort(int[] ints)
+    public int[] Sort(int[] ints)
     {
         bool sorted = false;
         while (!sorted)
