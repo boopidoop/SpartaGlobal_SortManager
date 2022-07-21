@@ -16,11 +16,18 @@ public class Tests
     };
 
     static object[] MergeCases =
-{
-        new object[] { new int[] { 3,9,1 }, new int[] { 4, 2, }, new int[] { 1,2,3,4,9 } },
-        new object[] { new int[] { 7,5 }, new int[] { 6, 2, }, new int[] { 2,5,6,7 } },
-        new object[] { new int[] { 15,99 }, new int[] { -3000, 555,3 }, new int[] { -3000,3,15,99,555 } },
-        new object[] { new int[] { 8,3,4 }, new int[] { 0, 7, }, new int[] { 0,3,4,7,8 } }
+    {
+//        new object[] { new int[] { 3,9,1 }, new int[] { 4, 2, }, new int[] { 1,2,3,4,9 } },
+          new object[] { new int[] { 1,3,9 }, new int[] { 2, 4 }, new int[] { 1,2,3,4,9 } },
+
+//        new object[] { new int[] { 7,5 }, new int[] { 6, 2, }, new int[] { 2,5,6,7 } },
+          new object[] { new int[] { 5,7 }, new int[] { 2, 6 }, new int[] { 2,5,6,7 } },
+
+//        new object[] { new int[] { 15,99 }, new int[] { -3000, 555,3 }, new int[] { -3000,3,15,99,555 } },
+          new object[] { new int[] { 15,99 }, new int[] { -3000, 3,555 }, new int[] { -3000,3,15,99,555 } },
+
+//        new object[] { new int[] { 8,3,4 }, new int[] { 0, 7, }, new int[] { 0,3,4,7,8 } }
+          new object[] { new int[] { 3,4,8 }, new int[] { 0, 7 }, new int[] { 0,3,4,7,8 } }
     };
     #endregion
 
@@ -28,13 +35,14 @@ public class Tests
     [TestCaseSource(nameof(SortCases))]
     public void Given_AnUnsortedArray_MergeSort_ReturnsSortedArray(int[] inputArray, int[] sortedArray)
     {
-        Assert.That(SortingAlgorithms.MergeSort(inputArray), Is.EqualTo(sortedArray));
+        MergeSort mergeSort = new MergeSort();
+        Assert.That(mergeSort.Sort(inputArray), Is.EqualTo(sortedArray));
     }
 
     [TestCaseSource(nameof(MergeCases))]
     public void Given_TwoArrays_Merge_ReturnsMergedSortedArray(int[] firstHalf, int[] secondHalf, int[] mergedSortedArray) 
     {
-        Assert.That(SortingAlgorithms.Merge(firstHalf, secondHalf), Is.EqualTo(mergedSortedArray));
+        Assert.That(MergeSort.Merge(firstHalf, secondHalf), Is.EqualTo(mergedSortedArray));
     }
     #endregion
 
@@ -45,7 +53,7 @@ public class Tests
     [Ignore("Not implemented yet")]
     public void Given_AnUnsortedArray_BubbleSort_ReturnsSortedArray(int[] inputArray, int[] sortedArray)
     {
-        Assert.That(SortingAlgorithms.BubbleSort(inputArray), Is.EqualTo(sortedArray));
+        //Assert.That(SortingAlgorithms.BubbleSort(inputArray), Is.EqualTo(sortedArray));
     }
     #endregion
 }
