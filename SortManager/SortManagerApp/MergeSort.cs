@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Model;
 
-public class MergeSort : SortingAlgorithms
+public class MergeSort : ISort
 {
-    public override int[] Sort(int[] input)
+    public int[] Sort(int[] input)
     {
         // Breakpoint
         if (input.Length <= 1) return input;
