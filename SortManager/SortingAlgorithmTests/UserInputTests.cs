@@ -13,7 +13,7 @@ public class UserInputTests
     [TestCase("Bubble time")]
     [TestCase("gimme a BuBBlE")]
     [Ignore("test not implemented")]
-    public void GivenBubbleSortString_CheckInput_ReturnsBubbleSort() 
+    public void GivenBubbleSortString_CheckInput_ReturnsBubbleSort(string input) 
     {
         
     }
@@ -23,7 +23,7 @@ public class UserInputTests
     [TestCase("Merge please")]
     [TestCase("gimme a MeRgE")]
     [Ignore("test not implemented")]
-    public void GivenMergeSortString_CheckInput_ReturnsMergeSort()
+    public void GivenMergeSortString_CheckInput_ReturnsMergeSort(string input)
     {
         
     }
@@ -33,7 +33,7 @@ public class UserInputTests
     [TestCase("Dotnet please")]
     [TestCase("gimme a DOTnET")]
     [Ignore("test not implemented")]
-    public void GivenDotNetSortString_CheckInput_ReturnsDotNetSort()
+    public void GivenDotNetSortString_CheckInput_ReturnsDotNetSort(string input)
     {
         
     }
@@ -42,7 +42,7 @@ public class UserInputTests
     [TestCase("")]
     [TestCase("gimme something")]
     [Ignore("test not implemented")]
-    public void GivenInvalidString_CheckInput_ReturnsMessage()
+    public void GivenInvalidString_CheckInput_ReturnsMessage(string input)
     {
         
     }
