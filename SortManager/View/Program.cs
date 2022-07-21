@@ -37,5 +37,40 @@ public class Program
     {
         Console.WriteLine("Please choose a Sorting Algorithm");
 
+        bool valid = false;
+        while (!valid)
+        {
+            string output = ControllerToModel.CheckAlgorithmInput(Console.ReadLine());
+            if (output != "")
+                Console.WriteLine(output);
+            else
+                valid = true;
+        }
+        SetArraySize();
+    }
+
+    public static void SetArraySize()
+    {
+        Console.WriteLine("Please enter the size of the array to be sorted");
+
+        bool valid = false;
+        while (!valid)
+        {
+            string output = ControllerToModel.SetArraySize(Console.ReadLine());
+            if (output != "")
+                Console.WriteLine(output);
+            else
+                valid = true;
+        }
+    }
+
+    public static void GetUnsortedArray()
+    {
+
+    }
+
+    public static void Restart()
+    {
+        Console.WriteLine("Would you like to restart?")
     }
 }

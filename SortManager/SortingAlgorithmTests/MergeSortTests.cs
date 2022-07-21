@@ -3,50 +3,45 @@ namespace SortingAlgorithmTests;
 public class Tests
 {
 
-    #region Test Data
-    //SortCases can be used to test any of the sorting algorithms
-    //(as long as they are sorting int[] arrays)
-    static object[] SortCases =
+    [TestCaseSource(typeof(TestData), nameof(TestData.PositiveInts))]
+    public void Given_AnUnsortedArrayOfPositiveInts_MergeSort_ReturnsSortedArray(int[] inputArray, int[] sortedArray)
     {
-        new object[] { new int[] { 3,2,1 }, new int[] { 1,2,3 } },
-        new object[] { new int[] { 7,-7,100,4,1 }, new int[] { -7,1,4,7,100 } },
-        new object[] { new int[] { }, new int[] { } },
-        new object[] { new int[] { -8,-23,-15 }, new int[] { -23,-15,-8 } },
-        new object[] { new int[] { 80,25,16 }, new int[] { 16,25,80 } }
-    };
-
-    static object[] MergeCases =
-    {
-        new object[] { new int[] { 3,9,1 }, new int[] { 4, 2, }, new int[] { 1,2,3,4,9 } },
-        new object[] { new int[] { 7,5 }, new int[] { 6, 2, }, new int[] { 2,5,6,7 } },
-        new object[] { new int[] { 15,99 }, new int[] { -3000, 555,3 }, new int[] { -3000,3,15,99,555 } },
-        new object[] { new int[] { 8,3,4 }, new int[] { 0, 7, }, new int[] { 0,3,4,7,8 } }
-    };
-    #endregion
-
-    #region MergeSort
-    [TestCaseSource(nameof(SortCases))]
-    public void Given_AnUnsortedArray_MergeSort_ReturnsSortedArray(int[] inputArray, int[] sortedArray)
-    {
-        MergeSort mergeSort = new MergeSort();
-        Assert.That(mergeSort.Sort(inputArray), Is.EqualTo(sortedArray));
+        Assert.That(MergeSort.Sort(inputArray), Is.EqualTo(sortedArray));
     }
 
-    [TestCaseSource(nameof(MergeCases))]
-    public void Given_TwoArrays_Merge_ReturnsMergedSortedArray(int[] firstHalf, int[] secondHalf, int[] mergedSortedArray) 
+    [TestCaseSource(typeof(TestData), nameof(TestData.NegativeInts))]
+    public void Given_AnUnsortedArrayOfNegativeInts_MergeSort_ReturnsSortedArray(int[] inputArray, int[] sortedArray)
     {
-        Assert.That(MergeSort.Merge(firstHalf, secondHalf), Is.EqualTo(mergedSortedArray));
+        Assert.That(MergeSort.Sort(inputArray), Is.EqualTo(sortedArray));
     }
-    #endregion
 
-    #region BubbleSort
-
-    
-    [TestCaseSource(nameof(SortCases))]
-    [Ignore("Not implemented yet")]
-    public void Given_AnUnsortedArray_BubbleSort_ReturnsSortedArray(int[] inputArray, int[] sortedArray)
+    [TestCaseSource(typeof(TestData), nameof(TestData.PositiveAndNegativeInts))]
+    public void Given_AnUnsortedArrayOfPositiveAndNegativeInts_MergeSort_ReturnsSortedArray(int[] inputArray, int[] sortedArray)
     {
-        //Assert.That(SortingAlgorithms.BubbleSort(inputArray), Is.EqualTo(sortedArray));
+        Assert.That(MergeSort.Sort(inputArray), Is.EqualTo(sortedArray));
     }
-    #endregion
+
+    [TestCaseSource(typeof(TestData), nameof(TestData.ReversedInts))]
+    public void Given_AReversedSortedArrayOfInts_MergeSort_ReturnsSortedArray(int[] inputArray, int[] sortedArray)
+    {
+        Assert.That(MergeSort.Sort(inputArray), Is.EqualTo(sortedArray));
+    }
+
+    [TestCaseSource(typeof(TestData), nameof(TestData.SingleLengthArray))]
+    public void Given_ASingleLengthArray_MergeSort_ReturnsTheSameArray(int[] inputArray, int[] sortedArray)
+    {
+        Assert.That(MergeSort.Sort(inputArray), Is.EqualTo(sortedArray));
+    }
+
+    [TestCaseSource(typeof(TestData), nameof(TestData.SameInts))]
+    public void Given_AnArrayOfTheSameInts_MergeSort_ReturnsTheSameArray(int[] inputArray, int[] sortedArray)
+    {
+        Assert.That(MergeSort.Sort(inputArray), Is.EqualTo(sortedArray));
+    }
+
+    [TestCaseSource(typeof(TestData), nameof(TestData.ExtremeInts))]
+    public void Given_AnArrayWithMaxValueAndMinValueInts_MergeSort_ReturnsSortedArray(int[] inputArray, int[] sortedArray)
+    {
+        Assert.That(MergeSort.Sort(inputArray), Is.EqualTo(sortedArray));
+    }
 }
