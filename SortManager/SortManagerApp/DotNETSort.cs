@@ -2,9 +2,9 @@
 namespace Model;
 
 
-public class DotNetSort : SortingAlgorithms
+public class DotNetSort : ISort
 {
-    public static int[] Sort(int[] ints)
+    public int[] Sort(int[] ints)
     {
         List<int> sortedList = UnsortedArrayToUnsortedList(ints);
         sortedList = UnsortedListToSortedList(sortedList);
