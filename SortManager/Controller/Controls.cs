@@ -4,38 +4,63 @@ namespace Controller;
 
 public class ControllerToModel
 {
+    private static int _arraySize;
+    private static int[] _inputArray;
+    private static ISort _sortAlgorithm;
 
-    public static (string, int) CheckInput(string inputSortType)
+    public static string[] listOfAlgos = new string[]
     {
-        if (Int32.TryParse(inputSortType, out int sortType))
+        "Bubble", "Merge", "Net"
+    };
+
+    public static string CheckArrayInput(string arraySizeInput)
+    {
+        if (Int32.TryParse(arraySizeInput, out int arraySize))
         {
-            if (sortType <= 0)
+            if (arraySize <= 0)
             {
-                //TODO - Call Error function
-                return ($"Cannot have an array of size {sortType}", -999);
+                return $"Cannot have an array of size {arraySize}";
             }
         }
-        return ("", sortType);
+        else
+            return "Array size must be an integer";
+
+        _arraySize = arraySize;
+
+        return "";
     }
 
-    public void SortAlgorithm(ISort sortAlgo)
+    public static string CheckAlgorithmInput(string sortType)
     {
-        // Not yet implemented
+        GenerateIntegerList(_arraySize);
+
+        switch(sortType.ToLower())
+        {
+            case "merge":
+            case "mergesort":
+                _sortAlgorithm = new MergeSort();
+                return "";
+            case "bubble":
+            case "bubblesort":
+                _sortAlgorithm = new BubbleSort();
+                return "";
+            case "net":
+            case "netsort":
+                _sortAlgorithm = new DotNetSort();
+                return "";
+            default:
+                return "Sort algorithm not recognised";
+
+        }
     }
-    public static int[] GenerateIntegerList(int n)
+
+    public static void GenerateIntegerList(int n)
     {
-        if (n <= 0) return new int[] {};
-
-        int[] inputIntLs = new int[n];
-
         Random random = new Random(); //seed value based on sys clock
         
         for (int i = 0; i < n; i++)
         {
-            inputIntLs[i] = random.Next();
+            _inputArray[i] = random.Next();
         }
-        return inputIntLs;
-    }
-
-    
+    }  
 }
