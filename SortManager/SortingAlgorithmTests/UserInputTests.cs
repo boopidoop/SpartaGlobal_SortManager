@@ -9,9 +9,8 @@ namespace SortingAlgorithmTests;
 public class UserInputTests
 {
     [TestCase("BubbleSort")]
-    [TestCase("Bubbles")]
-    [TestCase("Bubble time")]
-    [TestCase("gimme a BuBBlE")]
+    [TestCase("Bubble")]
+    [TestCase("BuBBle")]
     [Ignore("test not implemented")]
     public void GivenBubbleSortString_CheckInput_ReturnsBubbleSort(string input) 
     {
@@ -20,8 +19,7 @@ public class UserInputTests
 
     [TestCase("MergeSort")]
     [TestCase("Merge")]
-    [TestCase("Merge please")]
-    [TestCase("gimme a MeRgE")]
+    [TestCase("MerGe")]
     [Ignore("test not implemented")]
     public void GivenMergeSortString_CheckInput_ReturnsMergeSort(string input)
     {
@@ -30,8 +28,7 @@ public class UserInputTests
 
     [TestCase("DotNetSort")]
     [TestCase("DotNet")]
-    [TestCase("Dotnet please")]
-    [TestCase("gimme a DOTnET")]
+    [TestCase("DotNET")]
     [Ignore("test not implemented")]
     public void GivenDotNetSortString_CheckInput_ReturnsDotNetSort(string input)
     {
