@@ -21,7 +21,7 @@ namespace SortingAlgorithmTests
             new int[][] { new int[] { -1 },                 new int[] { -1 }                },
             new int[][] { new int[] { -50,-1,-100 },        new int[] { -100,-50,-1 }       },
             new int[][] { new int[] { -2,-34,-17,-9,-3 },   new int[] { -34,-17,-9,-3,-2 }  },
-            new int[][] { new int[] { 99,64,50,81 },        new int[] { -54,-41,-26,-10 }   }
+            new int[][] { new int[] { -41,-54,-10,-26 },        new int[] { -54,-41,-26,-10 }   }
         };
 
         public static object[] PositiveAndNegativeInts =
