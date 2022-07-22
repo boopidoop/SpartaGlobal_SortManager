@@ -1,16 +1,17 @@
 ﻿using Model;
+using System.Diagnostics;
 
 namespace Controller;
 
-public class ControllerToModel
+public class Controls
 {
-    private static int _arraySize;
+    public static int _arraySize;
     private static int[] _inputArray;
-    private static ISort _sortAlgorithm;
+    public static ISort _sortAlgorithm;
 
     public static string[] listOfAlgos = new string[]
     {
-        "Bubble", "Merge", "Net"
+        "BubbleSort", "MergeSort", ".NET Sort"
     };
 
     public static string CheckArrayInput(string arraySizeInput)
@@ -32,8 +33,6 @@ public class ControllerToModel
 
     public static string CheckAlgorithmInput(string sortType)
     {
-        GenerateIntegerList(_arraySize);
-
         switch(sortType.ToLower())
         {
             case "merge":
@@ -50,17 +49,40 @@ public class ControllerToModel
                 return "";
             default:
                 return "Sort algorithm not recognised";
-
         }
     }
 
     public static void GenerateIntegerList(int n)
     {
-        Random random = new Random(); //seed value based on sys clock
+        Random random = new Random();
+        _inputArray = new int[_arraySize];
         
         for (int i = 0; i < n; i++)
         {
-            _inputArray[i] = random.Next();
+            _inputArray[i] = random.Next(0,100);
         }
-    }  
+    }
+
+    public static void FirstRun()
+    {
+        GenerateIntegerList(_arraySize);
+        _sortAlgorithm.Sort(_inputArray);
+    }
+
+    public static string Run()
+    {
+        FirstRun();
+        //runs once to fix time bug
+        var stopwatch = new Stopwatch();
+        stopwatch.Start();
+        
+        var sortedArray = _sortAlgorithm.Sort(_inputArray);
+
+        stopwatch.Stop();
+
+        return $"Results" +
+            $"\n\tUnsorted: \t[{string.Join(", ", _inputArray)}]" +
+            $"\n\tSorted: \t[{string.Join(", ", sortedArray)}]" +
+            $"\n\tTime Taken: \t{stopwatch.ElapsedTicks} ticks";
+    }
 }

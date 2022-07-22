@@ -11,7 +11,6 @@ public class UserInputTests
     [TestCase("BubbleSort")]
     [TestCase("Bubble")]
     [TestCase("BuBBle")]
-    [Ignore("test not implemented")]
     public void GivenBubbleSortString_CheckInput_ReturnsBubbleSort(string input) 
     {
         
@@ -20,7 +19,6 @@ public class UserInputTests
     [TestCase("MergeSort")]
     [TestCase("Merge")]
     [TestCase("MerGe")]
-    [Ignore("test not implemented")]
     public void GivenMergeSortString_CheckInput_ReturnsMergeSort(string input)
     {
         
@@ -29,7 +27,6 @@ public class UserInputTests
     [TestCase("DotNetSort")]
     [TestCase("DotNet")]
     [TestCase("DotNET")]
-    [Ignore("test not implemented")]
     public void GivenDotNetSortString_CheckInput_ReturnsDotNetSort(string input)
     {
         
@@ -38,7 +35,6 @@ public class UserInputTests
     [TestCase("x")]
     [TestCase("")]
     [TestCase("gimme something")]
-    [Ignore("test not implemented")]
     public void GivenInvalidString_CheckInput_ReturnsMessage(string input)
     {
         
